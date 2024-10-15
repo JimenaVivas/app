@@ -16,16 +16,19 @@ ROLES = [None, "PC", "Professor", "Team"]
 
 def login():
     st.markdown('<h2 class="header-title">Log in</h2>', unsafe_allow_html=True)
-    role = st.selectbox("Choose your role", ROLES)
+    # Añadir una clave única al selectbox
+    role = st.selectbox("Choose your role", ROLES, key="role_selectbox")
 
-    if st.button("Log in"):
+    # Añadir una clave única al botón
+    if st.button("Log in", key="login_button"):
         st.session_state.role = role
         st.rerun()
 
 def logout():
     st.markdown('<h2 class="header-title">Log out</h2>', unsafe_allow_html=True)
 
-    if st.button("Log out"):
+    # Añadir una clave única al botón de logout
+    if st.button("Log out", key="logout_button"):
         st.session_state.role = None
         st.rerun()
 
